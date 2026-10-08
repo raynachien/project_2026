@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opendata - 地方美食餐廳列表</title>
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/20260924.css">
+    <style>
+        @media screen and (max-width:768px) {
+            .table-rwd thead{
+                display: none;
+            }
+            .table-rwd tbody tr{
+                display: block;
+                border: 2px solid #6497d1;
+                margin-top: 15px;
+            }
+            .table-rwd tbody tr td{
+                display: block;
+                overflow: hidden;
+            }
+            .table-rwd tbody tr td::before{
+                content: attr(data-th)" : ";
+                font-size: 20px;
+                font-weight: 900;
+                display: block;
+                float: left;
+                width: 30%;
+                text-align: right;
+                padding-right: 15px;
+                color: #1d6cc5;
+            }
+            .table-rwd tbody tr td span{
+                display: block;
+                float: left;
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="display-2 fw-900 text-center m-4">地方美食餐廳列表</div>
+        <table class="table table-bordered table-rwd">
+            <thead class="table-dark">
+                <tr>
+                    <th width="10%">餐廳名稱</th>
+                    <th width="25%">餐廳圖片</th>
+                    <th width="20%">餐廳地址</th>
+                    <th width="10%">餐廳電話</th>
+                    <th width="10%">餐廳信箱</th>
+                    <th width="25%">餐廳簡介</th>
+                </tr>
+            </thead>
+            <tbody id="mytbody">
+                <tr>
+                    <td data-th="餐廳名稱"><span>XXX</span></td>
+                    <td data-th="餐廳圖片"><span><img src="images/landscape.avif" alt=""></span></td>
+                    <td data-th="餐廳地址"><span>XXX</span></td>
+                    <td data-th="餐廳電話"><span>XXX</span></td>
+                    <td data-th="餐廳信箱"><span>XXX</span></td>
+                    <td data-th="餐廳簡介"><span class="text-truncate" style="max-width: 450px; display: block;">例如驚訝或者工作詳細訊息，一路他是自己的魯蛇期限事業工作人員生活，能力蘋果一款科技有限公司，娛樂還在高雄體內台北某種鍵盤當前一時，公司不起你還去了情節幾天一句讓他討論會計高興些什麼信譽看出，大大是他我這什麼文明規模開通幫我下面投資者之類微笑，實現有一定地。</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>  
+    <script src="js/jquery-4.0.0.js"></script>
+    <script>
+        // 主程式:開始必定執行的地方
+        $(function(){
+            // 抓取外部資料 - 農村地方美食小吃特色料理
+            $.ajax({
+                type: "GET",
+                url: "https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvTravelFood.aspx?IsTransData=1&UnitId=193",
+                dataType: "json",
+                success: showdata,
+                error: function(){
+                    console.log("抓取外部資料 - 農村地方美食小吃特色料理 - 失敗!");
+                }
+            });
+        });
+
+        // 自訂函式 副程式
+        function showdata(data){
+            console.log(data);
+        
+            $("#mytbody").empty();
+            data.forEach(function(item){
+                console.log(item.Name);
+
+                const strHTML = `<tr>
+                                    <td data-th="餐廳名稱"><span>${item.Name}</span></td>
+                                    <td data-th="餐廳圖片"><span><img src="${item.PicURL}" alt=""></span></td>
+                                    <td data-th="餐廳地址"><span>${item.City}${item.Town}${item.Address}</span></td>
+                                    <td data-th="餐廳電話"><span>${item.Tel}</span></td>
+                                    <td data-th="餐廳信箱"><span>${item.Email}</span></td>
+                                    <td data-th="餐廳簡介"><span class="text-truncate" style="max-width: 450px; display: block;">${item.FoodFeature}</span></td>
+                                </tr>`;
+                $("#mytbody").append(strHTML);
+            });
+        }
+    </script>
+
+
+
+</body>
+</html>
