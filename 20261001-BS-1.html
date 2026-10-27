@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/20260924.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">地方美食</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">關於我們</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            服務項目
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="cotainer">
+        <div class="row row-cols-1 row-cols-md-2 g-4 mt-3" id="foodlist">
+            <div class="col">
+                <div class="card p-3">
+                    <img src="images/cat.avif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="display-6 fw-900 text-start mb-3">餐廳名稱</div>
+                        <div class="h5 text-center">地址:XXX</div>
+                        <div class="h6 text-end">電話:XXX</div>
+                        <p class="card-text text-truncate mt-3">
+                            國人明年馬上而在適當至於達到我要軟體上網看出，付出大型改革在他同意法院往往規定大部分，輸出中間就在討論區，工藝厲害都要對我，儀器那裡灌水人事群眾一段時間請點擊股份加入時間，請點擊是由麻煩標題台北基本為止距離關鍵字，有時現場預計醫藥目前這裡幾次廣大不說，進。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link disabled fw-900">POWER BY XXX 2026.10.1</a>
+        </li>
+    </ul>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script src="js/TravelFood.js"></script>
+    <script>
+        console.log(food);
+
+        $("#foodlist").empty();
+        food.forEach(function (item) {
+            const strHTML = `<div class="col">
+                                <div class="card p-3">
+                                  <img src="${item.PicURL}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <div class="display-6 fw-900 text-start mb-3">${item.Name}</div>
+                                        <div class="h5 text-center">地址:${item.City}${item.Town}${item.Address}</div>
+                                        <div class="h6 text-end">電話:${item.Tel}</div>
+                                        <p class="card-text text-truncate mt-3">${item.HostWords}</p>
+                                    </div>
+                                </div>
+                            </div>`;
+            $("#foodlist").append(strHTML);
+        });
+    </script>
+</body>
+
+</html>
