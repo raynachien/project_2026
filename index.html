@@ -7,28 +7,169 @@
     <title>學習歷程首頁</title>
     <link rel="stylesheet" href="CSS/bootstrap.min.css">
     <link rel="stylesheet" href="CSS/20260924.css">
+    <!-- Google Fonts 典雅襯線與無襯線字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
     <style>
-        .ul .li .a {
-            font-size: 30px;
+        :root {
+            --bg-color: #faf9f6;
+            /* 柔和奶白色背景 */
+            --card-bg: #ffffff;
+            /* 卡片純白 */
+            --primary-gold: #c5a880;
+            /* 高雅香檳金 */
+            --dark-gold: #ab8e66;
+            /* 深香檳金（懸停與強調） */
+            --text-main: #333230;
+            /* 深灰褐色內文（比純黑更有質感） */
+            --text-sub: #7a7571;
+            /* 質感灰 */
+            --border-color: #e8e2d9;
+            /* 淡金邊框 */
+            --shadow-soft: 0 10px 30px rgba(197, 168, 128, 0.08);
+            /* 柔和金色陰影 */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Poppins', 'Noto Serif TC', serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .luxury-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 50px 40px;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 頂部精緻金線裝飾 */
+        .luxury-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .main-title {
+            color: var(--primary-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem !important;
+        }
+
+        .main-title::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 1px;
+            background-color: var(--primary-gold);
+            margin: 15px auto 0;
+        }
+
+        .link-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .link-item {
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .link-item a {
+            display: flex;
+            align-items: center;
+            padding: 16px 24px;
+            font-size: 1.05rem;
+            color: var(--text-main);
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /* Hover 時的微光與金邊效果 */
+        .link-item a:hover {
+            color: var(--dark-gold);
+            border-color: var(--primary-gold);
+            background-color: #fdfbf7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 168, 128, 0.15);
+        }
+
+        /* 左側金點標記 */
+        .link-item a::before {
+            content: "✦";
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .link-item a:hover::before {
+            transform: rotate(45deg);
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="display-1 fw-900 text-center text-primary mt-3 mb-5">學習歷程筆記展示</div>
-        <ul class="h3">
-            <li class="my-3"><a href="20260923-AI-1-2 AI RWD-2 套用CSS.html" target="_blank">HTML與CSS排版練習(20260923)</a>
-            </li>
-            <li class="mb-3"><a href="20260929-javascript-travel food-AI美化.html"
-                    target="_blank">JavaScript語法練習-OpenData地方美食資料(20260929)</a></li>
-            <li class="mb-3"><a href="20261001-BS-1.html" target="_blank">Bootstrap練習-OpenData地方美食資料(20261001)</a></li>
-            <li class="mb-3"><a href="20261006-BS-table.html" target="_blank">BS-table練習-OpenData地方美食資料(20261006)</a>
-            </li>
-            <li class="mb-3"><a href="20261008-ex1.html" target="_blank">BS切版-Opendata地方美食資料(20261008)</a></li>
-            <li class="mb-3"><a href="20261013-ch7-flex-ex01.html" target="_blank">時間軸(timeline)練習(20261013)</a></li>
-            <li class="mb-3"><a href="20261015-ch8-forms-ex01-AI.html" target="_blank">表單排版練習(JS)(20261015)</a></li>
-        </ul>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="luxury-card">
+                    <h1 class="main-title text-center">學習歷程筆記展示</h1>
+                    <ul class="link-list">
+                        <li class="link-item">
+                            <a href="20260923-AI-1-2 AI RWD-2 套用CSS.html" target="_blank">HTML與CSS排版練習 (2026/09/23)</a>
+                        </li>
+                        <li class="link-item">
+                            <a href="20260929-javascript-travel food-AI美化.html" target="_blank">JavaScript語法練習 -
+                                OpenData地方美食資料 (2026/09/29)</a>
+                        </li>
+                        <li class="link-item">
+                            <a href="20261001-BS-1.html" target="_blank">Bootstrap練習 - OpenData地方美食資料 (2026/10/01)</a>
+                        </li>
+                        <li class="link-item">
+                            <a href="20261006-BS-table.html" target="_blank">BS-table練習 - OpenData地方美食資料
+                                (2026/10/06)</a>
+                        </li>
+                        <li class="link-item">
+                            <a href="20261008-ex1.html" target="_blank">BS切版 - OpenData地方美食資料 (2026/10/08)</a>
+                        </li>
+                        <li class="link-item">
+                            <a href="20261013-ch7-flex-ex01.html" target="_blank">時間軸 (Timeline) 練習 (2026/10/13)</a>
+                        </li>
+                        <li class="link-item">
+                            <a href="20261015-ch8-forms-ex01-AI.html" target="_blank">表單排版練習 (JS) (2026/10/15)</a>
+                        </li>
+                        <li class="link-item">
+                            <a href="20261110-SPA.html" target="_blank">SPA - 個人履歷排版練習 (2026/11/10)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="js/jquery-4.0.0.js"></script>
 </body>
